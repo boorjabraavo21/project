@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "extend_users",
+  "info": {
+    "singularName": "extend-user",
+    "pluralName": "extend-users",
+    "displayName": "ExtendUser",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "extend_user"
+    }
+  }
+}
