@@ -400,6 +400,42 @@ export interface ApiExtendUserExtendUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiPlayerPlayer extends Schema.CollectionType {
+  collectionName: 'players';
+  info: {
+    singularName: 'player';
+    pluralName: 'players';
+    displayName: 'Player';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    position: Attribute.String;
+    nation: Attribute.String;
+    age: Attribute.Integer;
+    rating: Attribute.Integer;
+    team: Attribute.String;
+    picture: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -725,6 +761,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::extend-user.extend-user': ApiExtendUserExtendUser;
+      'api::player.player': ApiPlayerPlayer;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
