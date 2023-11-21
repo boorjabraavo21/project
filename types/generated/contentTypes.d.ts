@@ -377,7 +377,6 @@ export interface ApiExtendUserExtendUser extends Schema.CollectionType {
     name: Attribute.String;
     surname: Attribute.String;
     age: Attribute.Integer;
-    picture: Attribute.Media;
     users_permissions_user: Attribute.Relation<
       'api::extend-user.extend-user',
       'oneToOne',
@@ -697,11 +696,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
-    >;
-    extend_user: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::extend-user.extend-user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

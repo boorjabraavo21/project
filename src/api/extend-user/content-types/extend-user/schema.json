@@ -21,22 +21,10 @@
     "age": {
       "type": "integer"
     },
-    "picture": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "extend_user"
+      "target": "plugin::users-permissions.user"
     }
   }
 }
