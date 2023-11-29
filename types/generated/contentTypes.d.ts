@@ -418,6 +418,11 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
     rating: Attribute.Integer;
     team: Attribute.String;
     picture: Attribute.Media;
+    squads: Attribute.Relation<
+      'api::player.player',
+      'manyToMany',
+      'api::squad.squad'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -429,6 +434,43 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSquadSquad extends Schema.CollectionType {
+  collectionName: 'squads';
+  info: {
+    singularName: 'squad';
+    pluralName: 'squads';
+    displayName: 'Squad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    badge: Attribute.Media;
+    lineUp: Attribute.String;
+    players: Attribute.Relation<
+      'api::squad.squad',
+      'manyToMany',
+      'api::player.player'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::squad.squad',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::squad.squad',
       'oneToOne',
       'admin::user'
     > &
@@ -762,6 +804,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::extend-user.extend-user': ApiExtendUserExtendUser;
       'api::player.player': ApiPlayerPlayer;
+      'api::squad.squad': ApiSquadSquad;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

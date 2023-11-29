@@ -38,6 +38,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "squads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::squad.squad",
+      "mappedBy": "players"
     }
   }
 }

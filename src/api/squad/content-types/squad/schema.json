@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "squads",
+  "info": {
+    "singularName": "squad",
+    "pluralName": "squads",
+    "displayName": "Squad"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "badge": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "lineUp": {
+      "type": "string"
+    },
+    "players": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::player.player",
+      "inversedBy": "squads"
+    }
+  }
+}
