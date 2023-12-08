@@ -376,7 +376,6 @@ export interface ApiExtendUserExtendUser extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     surname: Attribute.String;
-    age: Attribute.Integer;
     users_permissions_user: Attribute.Relation<
       'api::extend-user.extend-user',
       'oneToOne',
