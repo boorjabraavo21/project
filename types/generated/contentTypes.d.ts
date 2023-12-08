@@ -381,6 +381,7 @@ export interface ApiExtendUserExtendUser extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    nickname: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
