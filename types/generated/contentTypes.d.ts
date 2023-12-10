@@ -406,6 +406,7 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
     singularName: 'player';
     pluralName: 'players';
     displayName: 'Player';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -423,6 +424,9 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'manyToMany',
       'api::squad.squad'
     >;
+    numbers: Attribute.Integer;
+    matches: Attribute.Integer;
+    assists: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

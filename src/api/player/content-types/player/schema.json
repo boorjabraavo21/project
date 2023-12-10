@@ -4,7 +4,8 @@
   "info": {
     "singularName": "player",
     "pluralName": "players",
-    "displayName": "Player"
+    "displayName": "Player",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,20 +31,30 @@
       "type": "string"
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "squads": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::squad.squad",
       "mappedBy": "players"
+    },
+    "numbers": {
+      "type": "integer"
+    },
+    "matches": {
+      "type": "integer"
+    },
+    "assists": {
+      "type": "integer"
     }
   }
 }
